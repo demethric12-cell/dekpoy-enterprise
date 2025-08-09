@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dekpoy Enterprise</title>
+  <style>
+    /* Reset & base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+    }
+
+    body {
+      background-color: #f8f9fa;
+      line-height: 1.6;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    /* Navbar */
+    header {
+      background-color: #2a7a2a;
+      padding: 1rem 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .logo img {
+      height: 50px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.8rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links li a {
+      color: #e6f2e6;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links li a:hover {
+      color: #c6e0c6;
+    }
+
+    .btn {
+      background-color: #4caf50;
+      color: white;
+      padding: 0.55rem 1.3rem;
+      border: none;
+      border-radius: 4px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #3b8b3b;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #d4edda;
+      padding: 3rem 1rem;
+      margin-bottom: 3rem;
+      border-radius: 10px;
+    }
+
+    .hero-content {
+      flex: 1 1 400px;
+      max-width: 600px;
+    }
+
+    .hero-content h1 {
+      font-size: 2.8rem;
+      color: #2a7a2a;
+      margin-bottom: 1rem;
+    }
+
+    .hero-content p {
+      font-size: 1.25rem;
+      margin-bottom: 1.8rem;
+      color: #3b5323;
+    }
+
+    .hero-video {
+      flex: 1 1 400px;
+      max-width: 600px;
+      margin-top: 1rem;
+    }
+
+    .hero-video iframe {
+      width: 100%;
+      height: 315px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+
+    /* About Section */
+    .about {
+      background-color: white;
+      padding: 2rem 1rem;
+      margin-bottom: 3rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .about h2 {
+      color: #2a7a2a;
+      margin-bottom: 1rem;
+      font-size: 2rem;
+    }
+
+    .about p {
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: auto;
+      color: #555;
+    }
+
+    /* Products Section */
+    .shop {
+      margin-bottom: 3rem;
+    }
+
+    .shop h2 {
+      text-align: center;
+      color: #2a7a2a;
+      font-size: 2.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .shop-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+      gap: 1.8rem;
+    }
+
+    .product-box {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 1rem;
+      text-align: center;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .product-box:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-box img {
+      max-width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    .product-placeholder {
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: #2a7a2a;
+    }
+
+    .product-box p {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    /* Contact Section */
+    .contact {
+      background-color: #d4edda;
+      padding: 3rem 1rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .contact h2 {
+      text-align: center;
+      color: #2a7a2a;
+      font-size: 2.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-options {
+      text-align: center;
+      margin-bottom: 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .whatsapp-btn {
+      background-color: #25D366;
+    }
+
+    .whatsapp-btn:hover {
+      background-color: #1DA851;
+    }
+
+    .email-btn {
+      background-color: #0072c6;
+    }
+
+    .email-btn:hover {
+      background-color: #005ea2;
+    }
+
+    .vertical-form {
+      max-width: 500px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+    }
+
+    .vertical-form input,
+    .vertical-form textarea {
+      padding: 0.8rem;
+      border-radius: 6px;
+      border: 1.5px solid #ccc;
+      font-size: 1rem;
+      resize: vertical;
+      transition: border-color 0.3s ease;
+    }
+
+    .vertical-form input:focus,
+    .vertical-form textarea:focus {
+      border-color: #4caf50;
+      outline: none;
+    }
+
+    .vertical-form button {
+      background-color: #4caf50;
+      color: white;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .vertical-form button:hover {
+      background-color: #3b8b3b;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #2a7a2a;
+      color: #e6f2e6;
+      text-align: center;
+      padding: 1rem 0;
+      font-size: 0.9rem;
+      border-top: 1px solid #3b8b3b;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+      }
+      .hero-video {
+        margin-top: 2rem;
+      }
+      .navbar {
+        flex-wrap: wrap;
+      }
+      .nav-links {
+        flex-basis: 100%;
+        justify-content: center;
+        margin-top: 0.8rem;
+      }
+      .btn {
+        margin-top: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <img src="https://i.ibb.co/4wTnmLmJ/Dekpoy-Enterprise-Logo.png" alt="Dekpoy Enterprise Logo" />
+      </div>
+      <ul class="nav-links">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#shop">Products</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#shop" class="btn">Shop Now</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero">
+    <div class="hero-content">
+      <h1>Fresh Farm Produce Delivered to You</h1>
+      <p>Green Pepper, Okro, Tomatoes, Cassava — straight from our farm to your table.</p>
+      <a href="#shop" class="btn">Shop Now</a>
+    </div>
+    <div class="hero-video">
+      <iframe width="560" height="315"
+        src="https://www.youtube.com/embed/6D-OHzrMJbc?autoplay=1&mute=1&loop=1&playlist=6D-OHzrMJbc"
+        title="Farm Video" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+      </iframe>
+    </div>
+  </section>
+
+  <!-- About Us -->
+  <section id="about" class="about container">
+    <h2>About Us</h2>
+    <p>At Dekpoy Enterprise, we pride ourselves on delivering fresh, organic vegetables grown with care. Our mission is to provide healthy food to our community at fair prices.</p>
+  </section>
+
+  <!-- Products Section -->
+  <section class="shop container" id="shop">
+    <h2>Our Products</h2>
+    <div class="shop-grid">
+      <div class="product-box">
+        <img src="https://i.ibb.co/GQwYpFDr/bell-peper.jpg" alt="Green Pepper" />
+        <div class="product-placeholder">Green Pepper</div>
+        <p>50 GHS per kg</p>
+      </div>
+      <div class="product-box">
+        <img src="https://i.ibb.co/bgTHGNdB/kl-1.jpg" alt="Okro" />
+        <div class="product-placeholder">Okro</div>
+        <p>60 GHS per kg</p>
+      </div>
+      <div class="product-box">
+        <img src="https://i.ibb.co/qMRntV1C/Tomatoes-768x513.jpg" alt="Tomatoes" />
+        <div class="product-placeholder">Tomatoes</div>
+        <p>80 GHS per kg</p>
+      </div>
+      <div class="product-box">
+        <img src="https://i.ibb.co/gFjFfCTP/gari-2.jpg" alt="Gari" />
+        <div class="product-placeholder">Gari</div>
+        <p>40 GHS per kg</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Us -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <h2>Contact Us</h2>
+
+      <div class="contact-options">
+        <a href="https://wa.me/233598788163" target="_blank" class="btn whatsapp-btn">WhatsApp Us</a>
+        <a href="mailto:demethric12@gmail.com" class="btn email-btn">Email Us</a>
+      </div>
+
+      <form class="vertical-form" action="https://submit-form.com/ZvO7Kse7d" method="POST">
+        <input type="text" name="first_name" placeholder="First Name" required />
+        <input type="text" name="last_name" placeholder="Last Name" required />
+        <input type="text" name="contact_details" placeholder="Contact Details (Phone or Email)" required />
+        <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Dekpoy Enterprise. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
